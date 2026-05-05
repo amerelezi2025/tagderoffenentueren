@@ -1395,20 +1395,15 @@ function setPaused(p){
 
 /* ─ Handle advance action (space / click) ─ */
 function handleAdvance(){
-  // If on a reveal slide and not all items shown: reveal next item
   var rs=getActiveRevealSlide();
-  if(rs){
-    var allShown=!isRevealSlideActive();
-    if(!allShown){
-      // pause auto if not already
-      if(!paused){setPaused(true);}
-      revealNext(rs);
-      return;
-    }
+  // On a reveal slide with items still hidden: reveal next, pause if needed
+  if(rs && isRevealSlideActive()){
+    if(!paused){setPaused(true);}
+    revealNext(rs);
+    return;
   }
-  // Otherwise: if paused, unpause; else go to next slide
-  if(paused){setPaused(false);}
-  else{go(cur+1);}
+  // On any other state (normal slide, or reveal slide fully shown): toggle pause
+  setPaused(!paused);
 }
 
 /* ─ Keyboard ─ */
