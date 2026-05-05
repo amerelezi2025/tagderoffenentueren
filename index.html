@@ -451,6 +451,32 @@ html,body{
   .tl-line{display:none}
   .tl-item{align-items:flex-start}
 }
+
+/* ── STEP-REVEAL SLIDES ── */
+.step-reveal-slide .reveal-header{
+  /* always visible */
+}
+.step-reveal-slide .reveal-item{
+  opacity:0;
+  transform:translateY(18px) scale(.98);
+  transition:opacity .45s cubic-bezier(.4,0,.2,1),
+             transform .45s cubic-bezier(.4,0,.2,1);
+  pointer-events:none;
+}
+.step-reveal-slide .reveal-item.shown{
+  opacity:1;
+  transform:none;
+  pointer-events:auto;
+}
+/* hint arrow pulse */
+@keyframes hintPulse{0%,100%{opacity:.4;transform:translateY(0)}50%{opacity:.9;transform:translateY(4px)}}
+.reveal-hint{
+  text-align:center;margin-top:14px;
+  font-size:clamp(11px,1vw,13px);color:var(--fg4);letter-spacing:1.5px;text-transform:uppercase;
+  animation:hintPulse 2s ease-in-out infinite;
+  transition:opacity .3s;
+}
+.reveal-hint.done{opacity:0;pointer-events:none}
 </style>
 </head>
 <body>
@@ -1006,39 +1032,43 @@ html,body{
 
   <!-- DE lang -->
   <div class="lang-pane" data-lang="de" hidden>
-    <div class="fw">
-      <div class="fu" style="text-align:center">
+    <div class="fw step-reveal-slide" data-slide-id="s5-de">
+      <div class="reveal-header" style="text-align:center">
         <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(46,125,50,.1);border:1px solid rgba(46,125,50,.22);padding:6px 14px;border-radius:20px;margin-bottom:12px">
           <span style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green)">Was Ihr Kind gewinnt</span>
         </span>
+        <div class="mid-title" style="text-align:center;margin-bottom:6px">Gründe für die HTL</div>
+        <div class="rule rule-c" style="margin:10px auto 14px"></div>
       </div>
-      <div class="mid-title fu" style="text-align:center">Gründe für die HTL</div>
-      <div class="pc-list fu">
-        <div class="pc-item pro"><div class="pc-icon">✓</div><div><div class="pc-text">Doppelqualifikation: albanischer Abschluss + österreichisches Technikprofil</div></div></div>
-        <div class="pc-item pro"><div class="pc-icon">✓</div><div><div class="pc-text">Hochschulzugang in Albanien und Anschlussmöglichkeiten in Österreich / EU</div></div></div>
-        <div class="pc-item pro"><div class="pc-icon">✓</div><div><div class="pc-text">Unterricht durch Lehrkräfte aus Österreich und Albanien gemeinsam</div></div></div>
-        <div class="pc-item pro"><div class="pc-icon">✓</div><div><div class="pc-text">IT-Schwerpunkte: Systeme · Netzwerke · Medien · Web &amp; App-Entwicklung</div></div></div>
-        <div class="pc-item pro"><div class="pc-icon">✓</div><div><div class="pc-text">Drei echte Arbeitssprachen: Deutsch · Albanisch · Englisch</div></div></div>
+      <div class="pc-list" style="margin-top:0">
+        <div class="pc-item pro reveal-item"><div class="pc-icon">✓</div><div><div class="pc-text"><strong>Doppelqualifikation</strong>: albanischer Abschluss + <strong>österreichisches Technikprofil</strong></div></div></div>
+        <div class="pc-item pro reveal-item"><div class="pc-icon">✓</div><div><div class="pc-text"><strong>Hochschulzugang in Albanien</strong> und Anschlussmöglichkeiten in <strong>Österreich / EU</strong></div></div></div>
+        <div class="pc-item pro reveal-item"><div class="pc-icon">✓</div><div><div class="pc-text">Unterricht durch <strong>Lehrkräfte aus Österreich und Albanien</strong> gemeinsam</div></div></div>
+        <div class="pc-item pro reveal-item"><div class="pc-icon">✓</div><div><div class="pc-text"><strong>IT-Schwerpunkte</strong>: Systeme · Netzwerke · Medien · Web &amp; App-Entwicklung</div></div></div>
+        <div class="pc-item pro reveal-item"><div class="pc-icon">✓</div><div><div class="pc-text"><strong>Drei echte Arbeitssprachen</strong>: Deutsch · Albanisch · Englisch</div></div></div>
       </div>
+      <div class="reveal-hint">▼ Leertaste oder Klick für nächsten Punkt</div>
     </div>
   </div>
 
   <!-- AL lang -->
   <div class="lang-pane" data-lang="al">
-    <div class="fw">
-      <div class="fu" style="text-align:center">
+    <div class="fw step-reveal-slide" data-slide-id="s5-al">
+      <div class="reveal-header" style="text-align:center">
         <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(46,125,50,.1);border:1px solid rgba(46,125,50,.22);padding:6px 14px;border-radius:20px;margin-bottom:12px">
           <span style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green)">Çfarë fiton fëmija juaj</span>
         </span>
+        <div class="mid-title" style="text-align:center;margin-bottom:6px">Arsyet për HTL-në</div>
+        <div class="rule rule-c" style="margin:10px auto 14px"></div>
       </div>
-      <div class="mid-title fu" style="text-align:center">Arsyet për HTL-në</div>
-      <div class="pc-list fu">
-        <div class="pc-item pro"><div class="pc-icon">✓</div><div><div class="pc-text">Kualifikim i dyfishtë: mbarim shqiptar + profil teknik austriak</div></div></div>
-        <div class="pc-item pro"><div class="pc-icon">✓</div><div><div class="pc-text">Mundësi studimi në Shqipëri dhe vazhdimësi drejt Austrisë / BE</div></div></div>
-        <div class="pc-item pro"><div class="pc-icon">✓</div><div><div class="pc-text">Mësim i përbashkët nga mësues austriakë dhe shqiptarë</div></div></div>
-        <div class="pc-item pro"><div class="pc-icon">✓</div><div><div class="pc-text">IT: Sisteme · Rrjete · Media · Zhvillim web &amp; aplikacione</div></div></div>
-        <div class="pc-item pro"><div class="pc-icon">✓</div><div><div class="pc-text">Tre gjuhë pune reale: gjermanisht · shqip · anglisht</div></div></div>
+      <div class="pc-list" style="margin-top:0">
+        <div class="pc-item pro reveal-item"><div class="pc-icon">✓</div><div><div class="pc-text"><strong>Kualifikim i dyfishtë</strong>: mbarim shqiptar + <strong>profil teknik austriak</strong></div></div></div>
+        <div class="pc-item pro reveal-item"><div class="pc-icon">✓</div><div><div class="pc-text"><strong>Mundësi studimi në Shqipëri</strong> dhe vazhdimësi drejt <strong>Austrisë / BE</strong></div></div></div>
+        <div class="pc-item pro reveal-item"><div class="pc-icon">✓</div><div><div class="pc-text">Mësim i përbashkët nga <strong>mësues austriakë dhe shqiptarë</strong></div></div></div>
+        <div class="pc-item pro reveal-item"><div class="pc-icon">✓</div><div><div class="pc-text"><strong>IT</strong>: Sisteme · Rrjete · Media · <strong>Zhvillim web &amp; aplikacione</strong></div></div></div>
+        <div class="pc-item pro reveal-item"><div class="pc-icon">✓</div><div><div class="pc-text"><strong>Tre gjuhë pune reale</strong>: gjermanisht · shqip · anglisht</div></div></div>
       </div>
+      <div class="reveal-hint">▼ Hapësira ose klik për pikën tjetër</div>
     </div>
   </div>
 </div>
@@ -1049,49 +1079,53 @@ html,body{
 <div class="slide" id="s6">
   <!-- DE lang -->
   <div class="lang-pane" data-lang="de" hidden>
-    <div class="fw">
-      <div class="fu" style="text-align:center">
+    <div class="fw step-reveal-slide" data-slide-id="s6-de">
+      <div class="reveal-header" style="text-align:center">
         <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(154,123,28,.1);border:1px solid rgba(154,123,28,.22);padding:6px 14px;border-radius:20px;margin-bottom:12px">
           <span style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold)">Wichtig vor der Anmeldung</span>
         </span>
+        <div class="mid-title" style="text-align:center;margin-bottom:6px">Herausforderungen</div>
+        <div class="rule rule-c" style="margin:10px auto 14px"></div>
       </div>
-      <div class="mid-title fu" style="text-align:center">Herausforderungen</div>
-      <div class="pc-list fu">
-        <div class="pc-item con"><div class="pc-icon">!</div><div><div class="pc-text">Deutsch erfordert Kontinuität und regelmäßigen Einsatz</div></div></div>
-        <div class="pc-item con"><div class="pc-icon">!</div><div><div class="pc-text">Aufnahme über Testverfahren · begrenzte Plätze</div></div></div>
-        <div class="pc-item con"><div class="pc-icon">!</div><div><div class="pc-text">Anspruchsvoller technischer Weg — besonders Mathematik und IT-Fächer</div></div></div>
-        <div class="pc-item con">
+      <div class="pc-list" style="margin-top:0">
+        <div class="pc-item con reveal-item"><div class="pc-icon">!</div><div><div class="pc-text"><strong>Deutsch</strong> erfordert <strong>Kontinuität</strong> und regelmäßigen Einsatz</div></div></div>
+        <div class="pc-item con reveal-item"><div class="pc-icon">!</div><div><div class="pc-text">Aufnahme über <strong>Testverfahren</strong> · <strong>begrenzte Plätze</strong></div></div></div>
+        <div class="pc-item con reveal-item"><div class="pc-icon">!</div><div><div class="pc-text"><strong>Anspruchsvoller technischer Weg</strong> — besonders <strong>Mathematik</strong> und IT-Fächer</div></div></div>
+        <div class="pc-item con reveal-item">
           <div class="pc-icon">€</div>
           <div>
-            <div class="pc-text">Schulgeld: <strong style="color:var(--fg)">13.000 LEK / Monat</strong> (neue Beiträge)</div>
-            <div class="pc-sub">Die Schule wird vom österreichischen Ministerium und Elternbeiträgen finanziert.</div>
+            <div class="pc-text">Schulgeld: <strong style="color:var(--fg)">13.000 LEK / Monat</strong> <strong>(neue Beiträge)</strong></div>
+            <div class="pc-sub">Die Schule wird vom <strong>österreichischen Ministerium</strong> und Elternbeiträgen finanziert.</div>
           </div>
         </div>
       </div>
+      <div class="reveal-hint">▼ Leertaste oder Klick für nächsten Punkt</div>
     </div>
   </div>
 
   <!-- AL lang -->
   <div class="lang-pane" data-lang="al">
-    <div class="fw">
-      <div class="fu" style="text-align:center">
+    <div class="fw step-reveal-slide" data-slide-id="s6-al">
+      <div class="reveal-header" style="text-align:center">
         <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(154,123,28,.1);border:1px solid rgba(154,123,28,.22);padding:6px 14px;border-radius:20px;margin-bottom:12px">
           <span style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold)">Çfarë duhet të dini para regjistrimit</span>
         </span>
+        <div class="mid-title" style="text-align:center;margin-bottom:6px">Sfidat</div>
+        <div class="rule rule-c" style="margin:10px auto 14px"></div>
       </div>
-      <div class="mid-title fu" style="text-align:center">Sfidat</div>
-      <div class="pc-list fu">
-        <div class="pc-item con"><div class="pc-icon">!</div><div><div class="pc-text">Gjermanishtja kërkon vazhdimësi dhe punë të rregullt</div></div></div>
-        <div class="pc-item con"><div class="pc-icon">!</div><div><div class="pc-text">Pranimi bëhet me test · vendet janë të kufizuara</div></div></div>
-        <div class="pc-item con"><div class="pc-icon">!</div><div><div class="pc-text">Rruga teknike është kërkuese — sidomos matematika dhe lëndët IT</div></div></div>
-        <div class="pc-item con">
+      <div class="pc-list" style="margin-top:0">
+        <div class="pc-item con reveal-item"><div class="pc-icon">!</div><div><div class="pc-text"><strong>Gjermanishtja</strong> kërkon <strong>vazhdimësi</strong> dhe punë të rregullt</div></div></div>
+        <div class="pc-item con reveal-item"><div class="pc-icon">!</div><div><div class="pc-text">Pranimi bëhet me <strong>test</strong> · <strong>vendet janë të kufizuara</strong></div></div></div>
+        <div class="pc-item con reveal-item"><div class="pc-icon">!</div><div><div class="pc-text"><strong>Rruga teknike është kërkuese</strong> — sidomos <strong>matematika</strong> dhe lëndët IT</div></div></div>
+        <div class="pc-item con reveal-item">
           <div class="pc-icon">€</div>
           <div>
-            <div class="pc-text">Tarifa shkollore: <strong style="color:var(--fg)">13 000 lekë / muaj</strong> (të reja)</div>
-            <div class="pc-sub">Shkolla financohet nga Ministria Austriake e Arsimit dhe kontributet e prindërve.</div>
+            <div class="pc-text">Tarifa shkollore: <strong style="color:var(--fg)">13 000 lekë / muaj</strong> <strong>(të reja)</strong></div>
+            <div class="pc-sub">Shkolla financohet nga <strong>Ministria Austriake e Arsimit</strong> dhe kontributet e prindërve.</div>
           </div>
         </div>
       </div>
+      <div class="reveal-hint">▼ Hapësira ose klik për pikën tjetër</div>
     </div>
   </div>
 </div>
@@ -1247,6 +1281,57 @@ var piEl=document.getElementById('pi');
 var cur=0,total=slides.length,AUTO=10000,paused=false,pausedAt=0,timer=null,animOn=true;
 var lang='al'; // start in Albanian
 
+/* ─ Step-reveal state ─ */
+// revealState[slideId] = index of next item to reveal (-1 = not started)
+var revealState={};
+
+function getActiveRevealSlide(){
+  // find the visible step-reveal-slide in the current slide
+  var slide=slides[cur];
+  var panes=Array.from(slide.querySelectorAll('.lang-pane'));
+  var visible=panes.find(function(p){return !p.hidden});
+  if(!visible)return null;
+  return visible.querySelector('.step-reveal-slide');
+}
+
+function resetReveal(slideEl){
+  if(!slideEl)return;
+  var items=Array.from(slideEl.querySelectorAll('.reveal-item'));
+  items.forEach(function(el){el.classList.remove('shown')});
+  var hint=slideEl.querySelector('.reveal-hint');
+  if(hint)hint.classList.remove('done');
+  var id=slideEl.dataset.slideId;
+  if(id)revealState[id]=-1;
+}
+
+function revealNext(slideEl){
+  // returns true if revealed something, false if all done
+  var id=slideEl.dataset.slideId;
+  var items=Array.from(slideEl.querySelectorAll('.reveal-item'));
+  var current=revealState[id]!==undefined?revealState[id]:-1;
+  var nextIdx=current+1;
+  if(nextIdx>=items.length){
+    // all shown
+    return false;
+  }
+  items[nextIdx].classList.add('shown');
+  revealState[id]=nextIdx;
+  var hint=slideEl.querySelector('.reveal-hint');
+  if(hint){
+    if(nextIdx>=items.length-1){hint.classList.add('done');}
+  }
+  return true;
+}
+
+function isRevealSlideActive(){
+  var rs=getActiveRevealSlide();
+  if(!rs)return false;
+  var id=rs.dataset.slideId;
+  var items=Array.from(rs.querySelectorAll('.reveal-item'));
+  var current=revealState[id]!==undefined?revealState[id]:-1;
+  return current<items.length-1;
+}
+
 /* ─ Nav build ─ */
 function buildNav(){
   var prev=document.createElement('button');prev.className='nb';prev.innerHTML='&#8592;';
@@ -1274,6 +1359,10 @@ function go(n){
     el.style.animationName='none';
     void el.offsetWidth;
     el.style.animationName='';
+  });
+  /* reset reveal items on step-reveal slides */
+  slides[cur].querySelectorAll('.step-reveal-slide').forEach(function(rs){
+    resetReveal(rs);
   });
   document.querySelectorAll('.dot').forEach(function(d){
     d.classList.toggle('on',+d.dataset.i===cur);
@@ -1304,10 +1393,32 @@ function setPaused(p){
   }
 }
 
+/* ─ Handle advance action (space / click) ─ */
+function handleAdvance(){
+  // If on a reveal slide and not all items shown: reveal next item
+  var rs=getActiveRevealSlide();
+  if(rs){
+    var allShown=!isRevealSlideActive();
+    if(!allShown){
+      // pause auto if not already
+      if(!paused){setPaused(true);}
+      revealNext(rs);
+      return;
+    }
+  }
+  // Otherwise: if paused, unpause; else go to next slide
+  if(paused){setPaused(false);}
+  else{go(cur+1);}
+}
+
 /* ─ Keyboard ─ */
 document.addEventListener('keydown',function(e){
-  if(e.key===' '){e.preventDefault();setPaused(!paused);return}
-  if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();go(cur+1)}
+  if(e.key===' '){e.preventDefault();handleAdvance();return}
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();
+    var rs=getActiveRevealSlide();
+    if(rs&&isRevealSlideActive()){if(!paused)setPaused(true);revealNext(rs);}
+    else go(cur+1);
+  }
   else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();go(cur-1)}
   else if(e.key==='f'||e.key==='F'){toggleFS()}
 });
@@ -1315,8 +1426,7 @@ document.addEventListener('keydown',function(e){
 /* ─ Click deck ─ */
 document.getElementById('deck').addEventListener('click',function(e){
   if(e.target.closest('#nav')||e.target.closest('#op'))return;
-  if(paused){setPaused(false);return}
-  go(cur+1);
+  handleAdvance();
 });
 
 /* ─ Language ─ */
@@ -1336,6 +1446,10 @@ function applyLang(l){
   }
   var ba=document.getElementById('b-anim');
   ba.textContent=animOn?'✦ '+(l==='de'?'Animationen':'Animacione'):'○ '+(l==='de'?'Animationen':'Animacione');
+  // reset reveal for newly visible panes
+  slides[cur].querySelectorAll('.step-reveal-slide').forEach(function(rs){
+    resetReveal(rs);
+  });
 }
 window.setLang=function(l){lang=l;applyLang(l);go(cur);}
 
