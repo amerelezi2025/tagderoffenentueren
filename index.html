@@ -453,9 +453,34 @@ html,body{
 }
 
 /* ── STEP-REVEAL SLIDES ── */
-.step-reveal-slide .reveal-header{
-  /* always visible */
+.step-reveal-slide{
+  min-height:min(68vh,680px);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
 }
+.step-reveal-slide .reveal-header{
+  transition:transform .45s cubic-bezier(.4,0,.2,1);
+}
+.step-reveal-slide:not(.reveal-started) .reveal-header{
+  transform:translateY(clamp(190px,28vh,300px));
+}
+.step-reveal-slide .pc-list,
+.step-reveal-slide .reveal-hint{
+  overflow:hidden;
+  transition:opacity .35s cubic-bezier(.4,0,.2,1),
+             max-height .45s cubic-bezier(.4,0,.2,1),
+             margin .45s cubic-bezier(.4,0,.2,1);
+}
+.step-reveal-slide:not(.reveal-started) .pc-list,
+.step-reveal-slide:not(.reveal-started) .reveal-hint{
+  opacity:0;
+  max-height:0;
+  margin-top:0!important;
+  pointer-events:none;
+}
+.step-reveal-slide.reveal-started .pc-list{max-height:70vh}
+.step-reveal-slide.reveal-started .reveal-hint{max-height:48px}
 .step-reveal-slide .reveal-item{
   opacity:0;
   transform:translateY(18px) scale(.98);
@@ -753,22 +778,22 @@ html,body{
   <!-- DE lang -->
   <div class="lang-pane" data-lang="de" hidden>
     <div class="fw">
-      <div class="eyebrow fu" style="text-align:center">Schulzahlen 2024/25</div>
+      <div class="eyebrow fu" style="text-align:center">Schulzahlen 2025/2026</div>
       <div class="mid-title fu" style="text-align:center">Die Schule in Zahlen</div>
-      <div class="muted fu" style="text-align:center;max-width:680px;margin:7px auto 0">Laut Schulbuch 2024/25: 464 Schüler:innen in 20 Klassen, insgesamt 46 Lehrkräfte.</div>
+      <div class="muted fu" style="text-align:center;max-width:680px;margin:7px auto 0">Laut Schulbuch 2025/2026: 464 Schüler:innen in 20 Klassen, insgesamt 44 Lehrkräfte.</div>
       <div class="timeline fu">
         <div class="tl-line"></div>
         <div class="tl-item"><div class="tl-dot"><div class="tl-year">2007</div></div><div class="tl-label">Gründung</div></div>
         <div class="tl-item"><div class="tl-dot"><div class="tl-year">2008</div></div><div class="tl-label">Erste Klassen</div></div>
         <div class="tl-item"><div class="tl-dot"><div class="tl-year">2013</div></div><div class="tl-label">Erste Matura</div></div>
         <div class="tl-item"><div class="tl-dot"><div class="tl-year">2024</div></div><div class="tl-label">Alumni-Treffen</div></div>
-        <div class="tl-item"><div class="tl-dot"><div class="tl-year">2024/25</div></div><div class="tl-label">13 Jahrgänge</div></div>
+        <div class="tl-item"><div class="tl-dot"><div class="tl-year">2025/2026</div></div><div class="tl-label">13 Jahrgänge</div></div>
       </div>
       <div class="stats-row fu">
         <div class="stat-box"><div class="stat-num">464</div><div class="stat-label">Schüler:innen</div><div class="stat-sub">gesamt</div></div>
         <div class="stat-box"><div class="stat-num">20</div><div class="stat-label">Klassen</div><div class="stat-sub">insgesamt</div></div>
         <div class="stat-box"><div class="stat-num">25</div><div class="stat-label">Lehrkräfte</div><div class="stat-sub">aus Österreich</div></div>
-        <div class="stat-box"><div class="stat-num">21</div><div class="stat-label">Lehrkräfte</div><div class="stat-sub">aus Albanien</div></div>
+        <div class="stat-box"><div class="stat-num">19</div><div class="stat-label">Lehrkräfte</div><div class="stat-sub">aus Albanien</div></div>
       </div>
     </div>
   </div>
@@ -776,22 +801,22 @@ html,body{
   <!-- AL lang -->
   <div class="lang-pane" data-lang="al">
     <div class="fw">
-      <div class="eyebrow fu" style="text-align:center">Të dhëna 2024/25</div>
+      <div class="eyebrow fu" style="text-align:center">Të dhëna 2025/2026</div>
       <div class="mid-title fu" style="text-align:center">Shkolla në shifra</div>
-      <div class="muted fu" style="text-align:center;max-width:680px;margin:7px auto 0">Sipas librit të shkollës 2024/25: 464 nxënës në 20 klasa, 46 mësues gjithsej.</div>
+      <div class="muted fu" style="text-align:center;max-width:680px;margin:7px auto 0">Sipas librit të shkollës 2025/2026: 464 nxënës në 20 klasa, 44 mësues gjithsej.</div>
       <div class="timeline fu">
         <div class="tl-line"></div>
         <div class="tl-item"><div class="tl-dot"><div class="tl-year">2007</div></div><div class="tl-label">Themelimi</div></div>
         <div class="tl-item"><div class="tl-dot"><div class="tl-year">2008</div></div><div class="tl-label">Klasat e para</div></div>
         <div class="tl-item"><div class="tl-dot"><div class="tl-year">2013</div></div><div class="tl-label">Matura e parë</div></div>
         <div class="tl-item"><div class="tl-dot"><div class="tl-year">2024</div></div><div class="tl-label">Takimi i alumnit</div></div>
-        <div class="tl-item"><div class="tl-dot"><div class="tl-year">2024/25</div></div><div class="tl-label">13 gjenerata</div></div>
+        <div class="tl-item"><div class="tl-dot"><div class="tl-year">2025/2026</div></div><div class="tl-label">13 gjenerata</div></div>
       </div>
       <div class="stats-row fu">
         <div class="stat-box"><div class="stat-num">464</div><div class="stat-label">Nxënës</div><div class="stat-sub">gjithsej</div></div>
         <div class="stat-box"><div class="stat-num">20</div><div class="stat-label">Klasa</div><div class="stat-sub">gjithsej</div></div>
         <div class="stat-box"><div class="stat-num">25</div><div class="stat-label">Mësues</div><div class="stat-sub">nga Austria</div></div>
-        <div class="stat-box"><div class="stat-num">21</div><div class="stat-label">Mësues</div><div class="stat-sub">nga Shqipëria</div></div>
+        <div class="stat-box"><div class="stat-num">19</div><div class="stat-label">Mësues</div><div class="stat-sub">nga Shqipëria</div></div>
       </div>
     </div>
   </div>
@@ -1094,7 +1119,7 @@ html,body{
         <div class="pc-item con reveal-item">
           <div class="pc-icon">€</div>
           <div>
-            <div class="pc-text">Schulgeld: <strong style="color:var(--fg)">13.000 LEK / Monat</strong> <strong>(neue Beiträge)</strong></div>
+            <div class="pc-text">Schulgeld: <strong style="color:var(--fg)">13.500 LEK / Monat</strong> <strong>(neue Beiträge)</strong></div>
             <div class="pc-sub">Die Schule wird vom <strong>österreichischen Ministerium</strong> und Elternbeiträgen finanziert.</div>
           </div>
         </div>
@@ -1120,7 +1145,7 @@ html,body{
         <div class="pc-item con reveal-item">
           <div class="pc-icon">€</div>
           <div>
-            <div class="pc-text">Tarifa shkollore: <strong style="color:var(--fg)">13 000 lekë / muaj</strong> <strong>(të reja)</strong></div>
+            <div class="pc-text">Tarifa shkollore: <strong style="color:var(--fg)">13 500 lekë / muaj</strong> <strong>(të reja)</strong></div>
             <div class="pc-sub">Shkolla financohet nga <strong>Ministria Austriake e Arsimit</strong> dhe kontributet e prindërve.</div>
           </div>
         </div>
@@ -1298,6 +1323,7 @@ function resetReveal(slideEl){
   if(!slideEl)return;
   var items=Array.from(slideEl.querySelectorAll('.reveal-item'));
   items.forEach(function(el){el.classList.remove('shown')});
+  slideEl.classList.remove('reveal-started');
   var hint=slideEl.querySelector('.reveal-hint');
   if(hint)hint.classList.remove('done');
   var id=slideEl.dataset.slideId;
@@ -1314,6 +1340,7 @@ function revealNext(slideEl){
     // all shown
     return false;
   }
+  slideEl.classList.add('reveal-started');
   items[nextIdx].classList.add('shown');
   revealState[id]=nextIdx;
   var hint=slideEl.querySelector('.reveal-hint');
